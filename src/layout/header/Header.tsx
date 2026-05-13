@@ -32,14 +32,12 @@ export default function Header() {
         };
     }, []);
 
-    const headerBg = scrolled ? "bg-[var(--color-black)] shadow-lg" : "bg-transparent";
-    const borderClass = scrolled ? "border-none" : "border-b border-[var(--color-gray)]/20";
 
     return (
-        <header className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out ${headerBg} ${borderClass}`}>
+        <header className={'w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out bg-black'}>
             <div className="max-w-360 mx-auto px-4 md:px-8">
 
-                <section className="flex items-center justify-between py-4 gap-6">
+                <section className="flex items-center m-0 justify-between py-4 gap-6">
                     <div className="shrink-0"><Logo /></div>
 
                     {!isMobile && (<div className="grow max-w-2xl"><SearchBar /></div>)}

@@ -1,7 +1,13 @@
-
+import Cart from "../buttons/Cart"
+import Suport from "../buttons/Suport"
+import Register from "../buttons/Register"
 
 export default function Buttons() {
     return (
-        <div>Buttons</div>
+        <div className="flex gap-3">
+            <Cart />
+            <Suport />
+            <Register/>
+        </div>
     )
 }
