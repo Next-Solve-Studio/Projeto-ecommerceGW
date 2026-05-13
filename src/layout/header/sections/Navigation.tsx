@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
-import { HiOutlineTicket, HiOutlineLightningBolt } from "react-icons/hi"; 
+import { HiOutlineTicket, HiOutlineLightningBolt } from "react-icons/hi";
+import { FaHeart } from "react-icons/fa";
 
 export default function Navigation() {
     type ItemType = {
@@ -12,6 +13,7 @@ export default function Navigation() {
     const buttonsNav: ItemType[] = [
         { id: 1, label: 'Cupons', href: '/' },
         { id: 2, label: 'Mais Vendidos', href: '/' },
+        { id: 3, label: 'Favoritos', href: '/' },
     ];
 
     const linksNav: ItemType[] = [
@@ -29,7 +31,7 @@ export default function Navigation() {
                 {buttonsNav.map((item) => (
                     <Link key={item.id} href={item.href}
                         className="group relative flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue text-black font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(121,196,242,0.4)]">
-                        {item.id === 1 ? <HiOutlineTicket size={16} /> : <HiOutlineLightningBolt size={16} />}
+                        {item.id === 1 ? (<HiOutlineTicket size={16} />) : item.id === 3 ? (<FaHeart size={16} />) : (<HiOutlineLightningBolt size={16} />)}
                         {item.label}
                     </Link>
                 ))}
