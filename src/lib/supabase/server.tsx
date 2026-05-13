@@ -10,7 +10,8 @@ if (!supabaseUrl) {
 if (!supabaseKey) {
   throw new Error("Variável de ambiente NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY não definida.");
 }
-
+console.log('Supabase URL:', supabaseUrl);
+console.log('Supabase Key:', supabaseKey ? 'presente' : 'ausente');
 export const createClient = (cookieStore: Awaited<ReturnType<typeof cookies>>) => {
   return createServerClient(
     supabaseUrl,

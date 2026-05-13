@@ -96,7 +96,7 @@ export async function PUT(
     const { data, error } = await supabase
       .from('products')
       .update(body)
-      .eq('id', params.id)
+      .eq('id_prod', params.id)
       .select()
       .single();
 
@@ -165,7 +165,7 @@ export async function DELETE(
     const { error } = await supabase
       .from('products')
       .delete()
-      .eq('id', params.id);
+      .eq('id_prod', params.id);
 
     if (error) {
       if (error.code === 'PGRST116') {

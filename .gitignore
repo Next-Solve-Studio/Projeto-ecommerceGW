@@ -43,3 +43,5 @@ next-env.d.ts
 
 # tutorial individual
 /.tours
+
+/src/querySupabase

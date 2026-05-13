@@ -1,5 +1,5 @@
 export interface Category {
-  id: string;
+  id_categ: number;
   name: string;
   description: string | null;
   created_at: string;
@@ -7,7 +7,7 @@ export interface Category {
 }
 
 export interface Product {
-  id: string;
+  id_prod: number;
   name: string;
   description: string | null;
   price: number;

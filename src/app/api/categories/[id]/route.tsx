@@ -16,7 +16,7 @@ export async function GET(
     const { data, error } = await supabase
       .from('categories')
       .select('*')
-      .eq('id', params.id)
+      .eq('id_categ', params.id)
       .single();
 
     if (error) {
@@ -97,7 +97,7 @@ export async function PUT(
     const { data, error } = await supabase
       .from('categories')
       .update({ name, description })
-      .eq('id', params.id)
+      .eq('id_categ', params.id)
       .select()
       .single();
 
@@ -166,7 +166,7 @@ export async function DELETE(
     const { error } = await supabase
       .from('categories')
       .delete()
-      .eq('id', params.id);
+      .eq('id_categ', params.id);
 
     if (error) {
       if (error.code === 'PGRST116') {
