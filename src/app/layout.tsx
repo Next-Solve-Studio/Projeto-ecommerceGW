@@ -5,7 +5,7 @@ import Header from "@/layout/header/Header";
 
 
 export const metadata: Metadata = {
-    title: "NexPlay - A Melhor Loja Gamer do Brasil",
+    title: "NexPlay! || A loja gamer com mais descontos e com os melhores produtos do Brasil",
 
     description: "Na NexPlay, você encontra os melhores produtos para o seu setup: computadores gamers, notebooks, periféricos e acessórios de alta qualidade. Tudo o que você precisa para elevar sua experiência está aqui! Aproveite nossas ofertas e promoções exclusivas e venha conferir tudo o que a NexPlay tem para você.",
 
