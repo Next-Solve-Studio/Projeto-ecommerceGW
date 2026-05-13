@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  max-width: 100%;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -7,9 +19,14 @@
 
 @theme inline {
   --color-background: #F5F5F5;
-  --color-white: #FFFFFF;
-  --color-black: #0d0d0d;
-  
+   --color-black: #0D0D0D;
+  --color-gray: #8C8C8C;
+  --color-white: #fdfdfd;
+  --color-blue: #79C4F2;
+  --color-grandient-gray: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --color-grandient-black: linear-gradient(135deg, #0a0a0a 0%, #363636 100%);
+  --color-grandient-blue: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  --color-grandient-red:  linear-gradient(135deg, #faf9f9 0%, #f0efef 100%);
 }
 
 body {
