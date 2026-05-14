@@ -1,5 +1,5 @@
-"use client"
-import { FiSearch } from "react-icons/fi"
+"use client";
+import { FiSearch } from "react-icons/fi";
 
 export default function SearchBar() {
     return (
@@ -14,10 +14,11 @@ export default function SearchBar() {
 
                 <button
                     type="submit"
-                    className="absolute right-2 flex items-center justify-center w-9 h-9 rounded-lg bg-blue-600 text-white transition-all duration-300 hover:bg-blue-500 active:scale-95">
+                    className="absolute right-2 flex items-center justify-center w-9 h-9 rounded-lg bg-blue-600 text-white transition-all duration-300 hover:bg-blue-500 active:scale-95"
+                >
                     <FiSearch size={18} />
                 </button>
             </div>
         </form>
-    )
-}   
+    );
+}
