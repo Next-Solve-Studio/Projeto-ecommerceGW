@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import Header from "@/layout/header/Header";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
     title: "NexPlay! || A loja gamer com mais descontos e com os melhores produtos do Brasil",
@@ -65,7 +66,9 @@ export default function RootLayout({
     return (
         <html lang="pt-BR" className={`h-full antialiased`}>
             <Header />
-            <body className="min-h-full flex flex-col">{children}</body>
+            <AuthProvider>
+                <body className="min-h-full flex flex-col">{children}</body>
+            </AuthProvider>
         </html>
     );
 }
