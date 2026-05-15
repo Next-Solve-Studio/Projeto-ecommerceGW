@@ -2,8 +2,9 @@ import Carousel from "./sections/Carousel"
 
 export default function HomeMain() {
     return (
-        <main>
+        <main className="w-full h-full flex flex-col overflow-hidden">
             <Carousel />
+
         </main>
     )
 }
