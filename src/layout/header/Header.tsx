@@ -1,12 +1,12 @@
-"use client"
-import { useEffect, useState } from "react"
+"use client";
+import { useEffect, useState } from "react";
 /* import { usePathname } from "next/navigation" */
-import Logo from "./sections/Logo"
-import SearchBar from "./sections/SearchBar"
-import Buttons from "./sections/Buttons"
-import Department from "./sections/Department"
-import Navigation from "./sections/Navigation"
-import Sidebar from "./sections/Sidebar"
+import Logo from "./sections/Logo";
+import SearchBar from "./sections/SearchBar";
+import Buttons from "./sections/Buttons";
+import Department from "./sections/Department";
+import Navigation from "./sections/Navigation";
+import Sidebar from "./sections/Sidebar";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
@@ -15,7 +15,7 @@ export default function Header() {
 
     useEffect(() => {
         const checkScreen = () => {
-            setIsMobile(window.innerWidth < 768)
+            setIsMobile(window.innerWidth < 768);
         };
         checkScreen();
 
@@ -32,15 +32,23 @@ export default function Header() {
         };
     }, []);
 
-
     return (
-        <header className={'w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out bg-black'}>
+        <header
+            className={
+                "w-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out bg-black"
+            }
+        >
             <div className="max-w-360 mx-auto px-4 md:px-8">
-
                 <section className="flex items-center m-0 justify-between py-4 gap-6">
-                    <div className="shrink-0"><Logo /></div>
+                    <div className="shrink-0">
+                        <Logo />
+                    </div>
 
-                    {!isMobile && (<div className="grow max-w-2xl"><SearchBar /></div>)}
+                    {!isMobile && (
+                        <div className="grow max-w-2xl">
+                            <SearchBar />
+                        </div>
+                    )}
 
                     <div className="flex items-center gap-4">
                         {!isMobile ? <Buttons /> : <Sidebar />}
@@ -56,8 +64,13 @@ export default function Header() {
                     </section>
                 )}
 
-                {isMobile && (<div className="pb-4"> <SearchBar /></div>)}
+                {isMobile && (
+                    <div className="pb-4">
+                        {" "}
+                        <SearchBar />
+                    </div>
+                )}
             </div>
         </header>
-    )
+    );
 }

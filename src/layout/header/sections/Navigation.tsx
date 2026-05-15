@@ -1,5 +1,5 @@
-"use client"
-import Link from "next/link"
+"use client";
+import Link from "next/link";
 import { HiOutlineTicket, HiOutlineLightningBolt } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
 
@@ -80,7 +80,10 @@ export default function Navigation() {
             <ul className="flex items-center gap-6">
                 {linksNav.map((link) => (
                     <li key={link.id}>
-                        <Link href={link.href} className="relative text-sm font-medium text-gray transition-colors duration-300 hover:text-white group">
+                        <Link
+                            href={link.href}
+                            className="relative text-sm font-medium text-gray transition-colors duration-300 hover:text-white group"
+                        >
                             {link.label}
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue transition-all duration-300 group-hover:w-full"></span>
                         </Link>
@@ -88,5 +91,5 @@ export default function Navigation() {
                 ))}
             </ul>
         </nav>
-    )
+    );
 }
