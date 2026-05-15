@@ -4,19 +4,56 @@ import { HiOutlineTicket, HiOutlineLightningBolt } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
 
 export default function Navigation() {
+
+    const getIcon = (id: number) => {
+        switch (id) {
+            case 1:
+                return <HiOutlineTicket size={16} />
+
+            case 2:
+                return <HiOutlineLightningBolt size={16} />
+
+            case 3:
+                return <FaHeart size={16} />
+
+            default:
+                return null
+        }
+    }
+
     type ItemType = {
         id: number;
         label: string;
         href: string;
+        color: string;
+        hoverColor: string;
     }
 
     const buttonsNav: ItemType[] = [
-        { id: 1, label: 'Cupons', href: '/' },
-        { id: 2, label: 'Mais Vendidos', href: '/' },
-        { id: 3, label: 'Favoritos', href: '/' },
+        {
+            id: 1,
+            label: 'Cupons',
+            href: '/',
+            color: 'bg-yellow-400 text-black',
+            hoverColor: 'hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]'
+        },
+        {
+            id: 2,
+            label: 'Mais Vendidos',
+            href: '/',
+            color: 'bg-blue-500 text-white',
+            hoverColor: 'hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]'
+        },
+        {
+            id: 3,
+            label: 'Favoritos',
+            href: '/',
+            color: 'bg-red-500 text-white',
+            hoverColor: 'hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]'
+        },
     ];
 
-    const linksNav: ItemType[] = [
+    const linksNav = [
         { id: 1, label: 'Hardwares', href: '/' },
         { id: 2, label: 'PC Gamer', href: '/' },
         { id: 3, label: 'Computadores', href: '/' },
@@ -27,11 +64,12 @@ export default function Navigation() {
 
     return (
         <nav className="flex items-center gap-8">
+
             <div className="flex items-center gap-3">
                 {buttonsNav.map((item) => (
-                    <Link key={item.id} href={item.href}
-                        className="group relative flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue text-black font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(121,196,242,0.4)]">
-                        {item.id === 1 ? (<HiOutlineTicket size={16} />) : item.id === 3 ? (<FaHeart size={16} />) : (<HiOutlineLightningBolt size={16} />)}
+                    <Link key={item.id} href={item.href} className={`group relative flex items-center gap-2 px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300
+                        hover:scale-105 ${item.color} ${item.hoverColor}`}>
+                        {getIcon(item.id)}
                         {item.label}
                     </Link>
                 ))}

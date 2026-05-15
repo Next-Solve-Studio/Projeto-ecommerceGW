@@ -38,7 +38,7 @@ export default function Department() {
 
             {isOpen && (
                 <nav onMouseLeave={() => setIsOpen(false)}
-                    className="absolute top-full left-0 w-64 bg-[var(--color-white) border-t-2 border-blue shadow-2xl rounded-b-lg overflow-hidden z-60 animate-in fade-in slide-in-from-top-2 duration-200"
+                    className="absolute top-full left-0 w-64 bg-white border-t-2 border-blue shadow-2xl rounded-b-lg overflow-hidden z-60 animate-in fade-in slide-in-from-top-2 duration-200"
                     aria-label="Menu de departamentos">
                     <ul className="py-2">
                         {linksNav.map((item) => (

@@ -1,7 +1,9 @@
-
+import Carousel from "./sections/Carousel"
 
 export default function HomeMain() {
     return (
-        <div>HomeMain</div>
+        <main>
+            <Carousel />
+        </main>
     )
 }

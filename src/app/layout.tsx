@@ -9,23 +9,23 @@ export const metadata: Metadata = {
 
     description: "Na NexPlay, você encontra os melhores produtos para o seu setup: computadores gamers, notebooks, periféricos e acessórios de alta qualidade. Tudo o que você precisa para elevar sua experiência está aqui! Aproveite nossas ofertas e promoções exclusivas e venha conferir tudo o que a NexPlay tem para você.",
 
-  keywords: [
-    "Computadores Gamers",
-    "Setup Gamer",
-    "Notebook Gamer",
-    "Periféricos Gamer",
-    "Mouse Gamer",
-    "Teclado Mecânico",
-    "Headset Gamer",
-    "Monitor Gamer",
-    "Cadeiras Gamer",
-    "Hardware de Alta Performance",
-    "PC Gamer Completo",
-    "Acessórios para Setup",
-    "Tecnologia Gamer",
-    "Promoções Gamer",
-    "NexPlay"
-],
+    keywords: [
+        "Computadores Gamers",
+        "Setup Gamer",
+        "Notebook Gamer",
+        "Periféricos Gamer",
+        "Mouse Gamer",
+        "Teclado Mecânico",
+        "Headset Gamer",
+        "Monitor Gamer",
+        "Cadeiras Gamer",
+        "Hardware de Alta Performance",
+        "PC Gamer Completo",
+        "Acessórios para Setup",
+        "Tecnologia Gamer",
+        "Promoções Gamer",
+        "NexPlay"
+    ],
 
     authors: [{ name: "NexPlay Shop", url: "" }],
 
