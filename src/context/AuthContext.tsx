@@ -23,6 +23,7 @@ interface AuthContextType {
   session: Session | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
+  signUp: (email: string, password: string, name: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -85,13 +86,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [supabase, updateLastActive]
   );
 
+  const signUp = useCallback(
+    async (email: string, password: string, name: string) => {
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: name,
+          },
+        },
+      });
+      if (!error) updateLastActive();
+      return { error };
+    },
+    [supabase, updateLastActive]
+  );
+
   const signOut = useCallback(async () => {
     await supabase.auth.signOut();
     localStorage.removeItem(LAST_ACTIVE_KEY);
   }, [supabase]);
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, session, loading, signIn, signUp, signOut }}>
       {children}
     </AuthContext.Provider>
   );
