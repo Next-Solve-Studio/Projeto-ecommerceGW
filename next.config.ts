@@ -21,9 +21,9 @@ const nextConfig: NextConfig = {
                 pathname: "/**",
             },
             {
-                protocol: 'https',
-                hostname: 'xbipdhhbepkmopdbromp.supabase.co',
-                pathname: '/storage/v1/object/public/**', // permite qualquer imagem dentro do bucket público
+                protocol: "https",
+                hostname: "xbipdhhbepkmopdbromp.supabase.co",
+                pathname: "/storage/v1/object/public/**", // permite qualquer imagem dentro do bucket público
             },
         ],
     },
