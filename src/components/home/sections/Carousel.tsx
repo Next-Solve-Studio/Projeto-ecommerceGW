@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Pagination, Autoplay, Navigation } from "swiper/modules"
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
-import "swiper/css"
-import "swiper/css/pagination"
-import "swiper/css/navigation"
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 type ItemType = {
-    id: number
-    image: string
-    alt: string
-}
+    id: number;
+    image: string;
+    alt: string;
+};
 
 const imgDesktop: ItemType[] = [
     {
@@ -25,7 +25,7 @@ const imgDesktop: ItemType[] = [
         image: "/bannerSlide-02.png",
         alt: "Ofertas Gamer 2",
     },
-]
+];
 
 const imgMobile: ItemType[] = [
     {
@@ -38,12 +38,11 @@ const imgMobile: ItemType[] = [
         image: "/mobile2.png",
         alt: "Slide Mobile 2",
     },
-]
+];
 
 export default function Carousel() {
     return (
         <section className="w-full pt-30 md:pt-36 bg-black overflow-hidden">
-
             <div className="hidden md:block w-full">
                 <Swiper
                     modules={[Pagination, Autoplay, Navigation]}
@@ -136,5 +135,5 @@ export default function Carousel() {
                 }
             `}</style>
         </section>
-    )
+    );
 }

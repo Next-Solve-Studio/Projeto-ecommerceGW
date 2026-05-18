@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { Toaster } from "sonner";
 import Header from "@/layout/header/Header";
 import { AuthProvider } from "@/context/AuthContext";
 
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         "Acessórios para Setup",
         "Tecnologia Gamer",
         "Promoções Gamer",
-        "NexPlay"
+        "NexPlay",
     ],
 
     authors: [{ name: "NexPlay Shop", url: "" }],
@@ -67,7 +67,7 @@ export default function RootLayout({
         <html lang="pt-BR" className={`h-full antialiased`}>
             <Header />
             <AuthProvider>
-                <body className="min-h-full flex flex-col">{children}</body>
+                <body className="min-h-full flex flex-col">{children}<Toaster /></body>
             </AuthProvider>
         </html>
     );

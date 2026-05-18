@@ -16,6 +16,7 @@ export interface Product {
     category_id: string | null;
     created_at: string;
     updated_at: string;
+    categories?: { name: string } | null;
 }
 
 export interface CreateProductRequest {
