@@ -3,7 +3,7 @@
 
 import { FiRefreshCw, FiFolder } from 'react-icons/fi';
 import { BsTrash } from 'react-icons/bs';
-import type { Category } from "@/types/products";
+import { useCategories } from '@/context/CategoriesContext';
 
 const fmtDate = (date: string) =>
   new Intl.DateTimeFormat('pt-BR', {
@@ -13,12 +13,12 @@ const fmtDate = (date: string) =>
   }).format(new Date(date));
 
 interface CategoryTableProps {
-  categories: Category[];
   loading: boolean;
   fetchCategories: () => void;
   onDelete: (id: number, name: string) => void;
 }
-export default function CategoryTable({categories,loading,fetchCategories, onDelete}:CategoryTableProps) {
+export default function CategoryTable({loading,fetchCategories, onDelete}:CategoryTableProps) {
+    const { categories } = useCategories();
     return (
         <div className="bg-white rounded-2xl p-6 shadow-md overflow-hidden">
             {/* Cabeçalho */}

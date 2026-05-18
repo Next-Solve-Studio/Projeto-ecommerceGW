@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import type { Category } from "@/types/products";
-
-
 import {
     TextField,
     FormControl,
@@ -40,8 +38,7 @@ export default function ProductForm({
     onSubmit,
 }: ProductFormProps) {
     /**
-     * Manipula a seleção de arquivo de imagem.
-     * Extrai o primeiro arquivo e notifica o pai via onImageChange.
+     * Manipula a seleção de arquivo de imagem. Extrai o primeiro arquivo e notifica o pai via onImageChange.
      * O pai decide se cria URL.createObjectURL e atualiza o estado.
      */
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +54,6 @@ export default function ProductForm({
             </h2>
 
             <form onSubmit={onSubmit} className="flex flex-col gap-4">
-                {/* Nome */}
                 <TextField
                     label="Nome *"
                     placeholder="Ex: Mouse Gamer Razer"
@@ -67,7 +63,6 @@ export default function ProductForm({
                     fullWidth
                 />
 
-                {/* Descrição */}
                 <TextField
                     label="Descrição"
                     placeholder="Descrição do produto"
@@ -79,7 +74,6 @@ export default function ProductForm({
                     fullWidth
                 />
 
-                {/* Preço e Estoque */}
                 <div className="grid grid-cols-2 gap-3">
                     <TextField
                         label="Preço (R$) *"
@@ -107,7 +101,6 @@ export default function ProductForm({
                     />
                 </div>
 
-                {/* Upload de Imagem */}
                 <div>
                     <p className="text-xs font-semibold text-gray-500 mb-1">
                         Imagem do Produto

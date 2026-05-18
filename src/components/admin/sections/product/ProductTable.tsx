@@ -4,13 +4,13 @@ import { FiRefreshCw, FiPackage, FiTag } from "react-icons/fi";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { BsBoxSeam } from "react-icons/bs";
 
-import type { Product, Category } from "@/types/products";
+import type { Product } from "@/types/products";
+import { useCategories } from "@/context/CategoriesContext";
 
 interface ProductTableProps {
     products: Product[];
     loadingProducts?: boolean;
     fetchProducts?: () => void;
-    categories: Category[];
 }
 
 const fmt = (value: number) =>
@@ -50,11 +50,10 @@ export default function ProductTable({
     products = [],
     loadingProducts = false,
     fetchProducts,
-    categories,
 }: ProductTableProps) {
+    const { categoryMap } = useCategories();
     return (
         <div className="bg-white rounded-2xl p-6 shadow-md overflow-hidden">
-            {/* Header */}
             <div className="flex items-center justify-between mb-5">
                 <h2 className="flex items-center gap-2 text-base font-bold text-gray-900">
                     <FiPackage className="text-sky-400" size={18} />
@@ -136,10 +135,8 @@ export default function ProductTable({
                                                         alt={p.name}
                                                         fill
                                                         className="object-cover"
-                                                        unoptimized 
                                                         onError={(e) => {
                                                             console.error('Erro ao carregar imagem:', p.image_url, e);
-                                                            // (e.target as HTMLImageElement).style.display = 'none'; // comente por enquanto
                                                         }}
                                                     />
                                                 ) : (
@@ -175,7 +172,7 @@ export default function ProductTable({
                                     {/* Categoria */}
                                     <td className="py-3 pr-4">
                                         <span className="px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">
-                                            {p.categories?.name ?? "—"}
+                                            {p.category_id ? (categoryMap.get(String(p.category_id)) ?? '—') : '—'}
                                         </span>
                                     </td>
 
