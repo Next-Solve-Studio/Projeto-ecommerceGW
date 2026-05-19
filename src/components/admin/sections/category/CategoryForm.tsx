@@ -47,20 +47,20 @@ export default function CategoryForm({
             <div>
                 <span className={spanClass}>Nome *</span>
                 <input
-                className={inputClass}
-                placeholder="Ex: Mouses"
-                value={form.name}
-                onChange={(e) => onChangeField('name', e.target.value)}
+                    className={inputClass}
+                    placeholder="Ex: Mouses"
+                    value={form.name}
+                    onChange={(e) => onChangeField('name', e.target.value)}
                 />
             </div>
 
             <div>
                 <span className={spanClass}>Descrição</span>
                 <textarea
-                className={`${inputClass} resize-none h-24`}
-                placeholder="Descrição opcional"
-                value={form.description}
-                onChange={(e) => onChangeField('description', e.target.value)}
+                    className={`${inputClass} resize-none h-24`}
+                    placeholder="Descrição opcional"
+                    value={form.description}
+                    onChange={(e) => onChangeField('description', e.target.value)}
                 />
             </div>
 

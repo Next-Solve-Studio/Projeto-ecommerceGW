@@ -11,39 +11,23 @@ import {
 } from "@mui/material";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useAuth } from "@/context/AuthContext";
-
+import { useLoginForm } from "@/hooks/Auth/useLoginForm";
 export default function LoginMain() {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const { signIn } = useAuth();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const {
+        email,
+        setEmail,
+        password,
+        setPassword,
+        showPassword,
+        setShowPassword,
+        loading,
+        error,
+        expiredByInactivity,
+        handleSubmit,
+    } = useLoginForm();
 
-    const expiredByInactivity = searchParams.get("reason") === "inatividade";
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError(null);
-        setLoading(true);
-
-        const { error } = await signIn(email, password);
-
-        if (error) {
-            setError(
-                error.message === "Invalid login credentials"
-                    ? "E-mail ou senha incorretos."
-                    : "Erro ao fazer login. Tente novamente.",
-            );
-            setLoading(false);
-            return;
-        }
-
-        router.push("/admin");
-    };
+    
     return (
         <main
             className="min-h-screen mt-40 flex items-center justify-center"
@@ -81,7 +65,7 @@ export default function LoginMain() {
                                 className="text-3xl font-black tracking-[0.2em] uppercase"
                                 style={{ color: "var(--color-blue)" }}
                             >
-                                Nex
+                                <span>Nex</span>
                                 <span style={{ color: "var(--color-white)" }}>
                                     Play
                                 </span>
@@ -160,27 +144,23 @@ export default function LoginMain() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 autoComplete="current-password"
-                                InputProps={{
+                                slotProps={{
+                                    input: {
                                     endAdornment: (
                                         <InputAdornment position="end">
-                                            <IconButton
-                                                onClick={() =>
-                                                    setShowPassword((v) => !v)
-                                                }
-                                                edge="end"
-                                                tabIndex={-1}
-                                                sx={{
-                                                    color: "var(--color-gray)",
-                                                }}
-                                            >
-                                                {showPassword ? (
-                                                    <HiEyeOff />
-                                                ) : (
-                                                    <HiEye />
-                                                )}
-                                            </IconButton>
+                                        <IconButton
+                                            onClick={() =>
+                                                setShowPassword((v) => !v)
+                                            }
+                                            edge="end"
+                                            tabIndex={-1}
+                                            sx={{ color: "var(--color-gray)" }}
+                                        >
+                                            {showPassword ? <HiEyeOff /> : <HiEye />}
+                                        </IconButton>
                                         </InputAdornment>
                                     ),
+                                    },
                                 }}
                                 sx={inputSx}
                             />
@@ -191,9 +171,9 @@ export default function LoginMain() {
                             >
                                 Sessões expiram após{" "}
                                 <span style={{ color: "var(--color-blue)" }}>
-                                    30 dias de inatividade
+                                    30 dias de inatividade.
                                 </span>
-                                .
+                                
                             </p>
 
                             <button
