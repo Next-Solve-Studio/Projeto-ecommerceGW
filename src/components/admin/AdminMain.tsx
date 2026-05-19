@@ -9,6 +9,7 @@ import TabButton from './ui/TabButton';
 import { useProducts } from '@/hooks/useProducts';
 import { useCategories } from '@/hooks/useCategories';
 import { useImageUpload } from '@/hooks/useImageUpload';
+import type { SyntheticEvent } from "react";
 
 type Tab = "products" | "categories";
 
@@ -43,7 +44,7 @@ export default function AdminMain() {
         resetImage,
     } = useImageUpload();
 
-    const handleProductSubmit = async (e: React.FormEvent) => {
+    const handleProductSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
         const imageUrl = await uploadImage();
 
@@ -53,31 +54,34 @@ export default function AdminMain() {
     };
 
     return (
-        <div className="min-h-screen py-8 px-5 bg-[#F5F5F5] mt-40">
-            <div className="max-w-275 mx-auto">
+        <div className="min-h-screen bg-[#f4f6f8] pt-8 pb-16 px-6 mt-40">
+            <div className="max-w-300 mx-auto">
+
                 {/* Cabeçalho */}
-                <div className="flex items-center gap-3.5 mb-8">
-                    <span className="bg-black text-sky-400 rounded-lg px-3 py-1 text-[11px] font-bold tracking-wide">
-                        ⚙ ADMIN
-                    </span>
-                    <h1 className="text-2xl font-bold text-gray-900">
+                <div className="flex items-center gap-4 mb-10">
+                    <div className="flex items-center gap-1.5 bg-black text-blue px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-[0.12em] uppercase">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue animate-pulse" />
+                        <span>Admin</span>
+                    </div>
+                    <div className="w-px h-5 bg-gray-300" />
+                    <h1 className="text-xl font-semibold text-[#111827] tracking-tight">
                         Painel Administrativo
                     </h1>
                 </div>
 
                 {/* Abas */}
-                <div className="flex gap-2 mb-7">
+                <div className="flex gap-2 mb-8 bg-white border border-gray-200 p-1 rounded-xl w-fit shadow-sm">
                     <TabButton
                         active={tab === 'products'}
                         onClick={() => setTab('products')}
-                        icon="🎮"
+                        icon="products"
                         label="Produtos"
                         count={products.length}
                     />
                     <TabButton
                         active={tab === 'categories'}
                         onClick={() => setTab('categories')}
-                        icon="📂"
+                        icon="categories"
                         label="Categorias"
                         count={categories.length}
                     />
