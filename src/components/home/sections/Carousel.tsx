@@ -1,8 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,53 +14,31 @@ type ItemType = {
 };
 
 const imgDesktop: ItemType[] = [
-    {
-        id: 1,
-        image: "/bannerSlide-01.png",
-        alt: "Ofertas Gamer 1",
-    },
-    {
-        id: 2,
-        image: "/bannerSlide-02.png",
-        alt: "Ofertas Gamer 2",
-    },
+    { id: 1, image: "/banner01.png", alt: "Banner01" },
+    { id: 2, image: "/banner02.png", alt: "Banner02" },
+    { id: 3, image: "/banner03.png", alt: "Banner03" },
 ];
 
 const imgMobile: ItemType[] = [
-    {
-        id: 1,
-        image: "/mobile1.png",
-        alt: "Slide Mobile 1",
-    },
-    {
-        id: 2,
-        image: "/mobile2.png",
-        alt: "Slide Mobile 2",
-    },
+    { id: 1, image: "/mobile1.png", alt: "Slide Mobile 1" },
+    { id: 2, image: "/mobile2.png", alt: "Slide Mobile 2" },
 ];
 
 export default function Carousel() {
     return (
-        <section className="w-full pt-30 md:pt-36 bg-black overflow-hidden">
+        <section className="w-full bg-black overflow-hidden">
             <div className="hidden md:block w-full">
                 <Swiper
-                    modules={[Pagination, Autoplay, Navigation]}
+                    modules={[Pagination, Autoplay]}
                     slidesPerView={1}
-                    pagination={{
-                        clickable: true,
-                        dynamicBullets: true,
-                    }}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    }}
-                    navigation
+                    pagination={{ clickable: true }}
+                    autoplay={{ delay: 5000, disableOnInteraction: false }}
                     loop
                     className="group"
                 >
                     {imgDesktop.map((item) => (
                         <SwiperSlide key={item.id}>
-                            <div className="relative w-full aspect-1920/600">
+                            <div className="relative w-full" style={{ height: "600px" }}>
                                 <Image
                                     src={item.image}
                                     alt={item.alt}
@@ -80,13 +57,8 @@ export default function Carousel() {
                 <Swiper
                     modules={[Pagination, Autoplay]}
                     slidesPerView={1}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    }}
+                    pagination={{ clickable: true }}
+                    autoplay={{ delay: 5000, disableOnInteraction: false }}
                     loop
                 >
                     {imgMobile.map((item) => (
@@ -106,24 +78,31 @@ export default function Carousel() {
             </div>
 
             <style jsx global>{`
+                .swiper-pagination {
+                    bottom: 16px !important;
+                }
+
                 .swiper-pagination-bullet {
-                    background: var(--color-gray) !important;
-                    opacity: 0.5;
-                    width: 12px;
-                    height: 12px;
-                    transition: all 0.3s ease;
+                    background: rgba(255, 255, 255, 0.4) !important;
+                    opacity: 1;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 999px;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    margin: 0 4px !important;
                 }
 
                 .swiper-pagination-bullet-active {
-                    background: var(--color-blue) !important;
-                    opacity: 1;
-                    width: 30px;
+                    background: #FACC15 !important;
+                    width: 28px;
+                    height: 8px;
                     border-radius: 999px;
+                    box-shadow: 0 0 8px rgba(250, 204, 21, 0.7);
                 }
 
                 .swiper-button-next,
                 .swiper-button-prev {
-                    color: var(--color-blue) !important;
+                    color: #FACC15 !important;
                     transform: scale(0.7);
                     opacity: 0;
                     transition: opacity 0.3s ease;

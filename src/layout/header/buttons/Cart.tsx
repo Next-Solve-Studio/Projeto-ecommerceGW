@@ -5,7 +5,7 @@ export default function Cart() {
     return (
         <button
             type="button"
-            className="relative flex items-center justify-center p-3 rounded-xl bg-white/5 border border-gray/10 text-white transition-all duration-300 hover:bg-white/10 hover:border-gold/50 group"
+            className="relative flex items-center justify-center p-3 rounded-2xl bg-white/5 border border-gray/10 text-white transition-all duration-300 hover:bg-white/10 hover:border-gold/50 group"
         >
             <FaCartShopping
                 size={22}

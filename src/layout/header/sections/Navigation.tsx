@@ -70,7 +70,7 @@ export default function Navigation() {
                     <Link
                         key={item.id}
                         href={item.href}
-                        className={`group relative flex items-center gap-2 px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300
+                        className={`group relative flex items-center gap-2 px-4 py-1.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300
                         hover:scale-105 ${item.color} ${item.hoverColor}`}
                     >
                         {getIcon(item.id)}
