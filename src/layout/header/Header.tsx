@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-/* import { usePathname } from "next/navigation" */
 import Logo from "./sections/Logo";
 import SearchBar from "./sections/SearchBar";
 import Buttons from "./sections/Buttons";
@@ -11,7 +10,6 @@ import Sidebar from "./sections/Sidebar";
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-    /*   const pathname = usePathname(); */
 
     useEffect(() => {
         const checkScreen = () => {

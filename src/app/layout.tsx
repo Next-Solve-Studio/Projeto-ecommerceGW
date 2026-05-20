@@ -5,58 +5,57 @@ import Header from "@/layout/header/Header";
 import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
-    title: "NexPlay! || A loja gamer com mais descontos e com os melhores produtos do Brasil",
+    title:
+        "Flowfun Suplementos || Sua loja online de suplementos, saúde e performance",
 
     description:
-        "Na NexPlay, você encontra os melhores produtos para o seu setup: computadores gamers, notebooks, periféricos e acessórios de alta qualidade. Tudo o que você precisa para elevar sua experiência está aqui! Aproveite nossas ofertas e promoções exclusivas e venha conferir tudo o que a NexPlay tem para você.",
+        "Na Flowfun Suplementos, você encontra os melhores suplementos para potencializar seus resultados: whey protein, creatina, pré-treinos, vitaminas, aminoácidos e muito mais. Produtos de alta qualidade, preços acessíveis e ofertas exclusivas para ajudar você a alcançar sua melhor performance.",
 
     keywords: [
-        "Computadores Gamers",
-        "Setup Gamer",
-        "Notebook Gamer",
-        "Periféricos Gamer",
-        "Mouse Gamer",
-        "Teclado Mecânico",
-        "Headset Gamer",
-        "Monitor Gamer",
-        "Cadeiras Gamer",
-        "Hardware de Alta Performance",
-        "PC Gamer Completo",
-        "Acessórios para Setup",
-        "Tecnologia Gamer",
-        "Promoções Gamer",
-        "NexPlay",
+        "Suplementos",
+        "Loja de Suplementos",
+        "Whey Protein",
+        "Creatina",
+        "Pré-Treino",
+        "Hipercalórico",
+        "BCAA",
+        "Aminoácidos",
+        "Vitaminas",
+        "Suplementos Fitness",
+        "Suplementos Academia",
+        "Nutrição Esportiva",
+        "Performance Fitness",
+        "Ganhar Massa Muscular",
+        "Emagrecimento",
+        "Saúde e Performance",
+        "Flowfun Suplementos",
     ],
 
-    authors: [{ name: "NexPlay Shop", url: "" }],
+    authors: [{ name: "Flowfun Suplementos", url: "" }],
 
     icons: {
-        icon: "/logonextplay.png",
+        icon: "/logoflowfun.png",
     },
 
     openGraph: {
-        title: "NexPlay - A Melhor Loja Gamer do Brasil",
+        title:
+            "Flowfun Suplementos - Energia, Performance e Resultados",
         description:
-            "Explore projetos de alta performance, de sistemas de gestão financeira a e-commerces institucionais, desenvolvidos com as tecnologias mais modernas do mercado.",
+            "Encontre os melhores suplementos para academia e performance esportiva na Flowfun Suplementos. Whey, creatina, pré-treinos, vitaminas e muito mais com ofertas exclusivas.",
         url: "",
-        siteName: "NexPlay",
+        siteName: "Flowfun Suplementos",
         images: [
             {
                 url: "/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Site de Vendas de Produtos Gamers",
+                alt: "Flowfun Suplementos - Loja de Suplementos Fitness",
             },
         ],
         locale: "pt_BR",
         type: "website",
     },
-
-    robots: {
-        index: true,
-        follow: true,
-    },
-};
+}
 
 export default function RootLayout({
     children,

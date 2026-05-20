@@ -31,21 +31,21 @@ export default function Navigation() {
     const buttonsNav: ItemType[] = [
         {
             id: 1,
-            label: "Cupons",
+            label: "Ofertas",
             href: "/",
             color: "bg-yellow-400 text-black",
             hoverColor: "hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]",
         },
         {
             id: 2,
-            label: "Mais Vendidos",
+            label: "kits ",
             href: "/",
             color: "bg-blue-500 text-white",
             hoverColor: "hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]",
         },
         {
             id: 3,
-            label: "Favoritos",
+            label: "Lançamentos",
             href: "/",
             color: "bg-red-500 text-white",
             hoverColor: "hover:shadow-[0_0_15px_rgba(239,68,68,0.5)]",
@@ -53,12 +53,14 @@ export default function Navigation() {
     ];
 
     const linksNav = [
-        { id: 1, label: "Hardwares", href: "/" },
-        { id: 2, label: "PC Gamer", href: "/" },
-        { id: 3, label: "Computadores", href: "/" },
-        { id: 4, label: "Notebooks", href: "/" },
-        { id: 5, label: "Periféricos", href: "/" },
-        { id: 6, label: "Monitores", href: "/" },
+        { id: 1, label: "Whey Protein", href: "/" },
+        { id: 2, label: "Pré Treino", href: "/" },
+        { id: 3, label: "Hipercalóricos", href: "/" },
+        { id: 4, label: "Creatinas", href: "/" },
+        { id: 5, label: "Vitaminas", href: "/" },
+        { id: 6, label: "Barrinhas", href: "/" },
+        { id: 7, label: "Termogênicos", href: "/" },
+        { id: 8, label: "Pasta de Amendoim", href: "/" },
     ];
 
     return (
@@ -87,7 +89,7 @@ export default function Navigation() {
                             className="relative text-sm font-medium text-gray transition-colors duration-300 hover:text-white group"
                         >
                             {link.label}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue transition-all duration-300 group-hover:w-full"></span>
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
                         </Link>
                     </li>
                 ))}

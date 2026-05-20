@@ -11,7 +11,7 @@ export default function Logo() {
         >
             <div className="relative w-55.5 h-25.5 md:w-60 md:h-20">
                 <Image
-                    src="/logonextplay.png"
+                    src="/logoflowfun.png"
                     alt="NextPlay Logo"
                     fill
                     priority
