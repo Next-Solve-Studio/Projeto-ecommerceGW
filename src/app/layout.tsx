@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "sonner";
 import Header from "@/layout/header/Header";
+import Chatbot from "@/layout/chatbot/Chatbot";
 import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
@@ -67,6 +68,7 @@ export default function RootLayout({
             <Header />
             <AuthProvider>
                 <body className="min-h-full flex flex-col">{children}<Toaster /></body>
+                <Chatbot />
             </AuthProvider>
         </html>
     );
