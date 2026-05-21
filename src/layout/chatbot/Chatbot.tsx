@@ -1,11 +1,6 @@
 "use client";
-
-import { useState, useEffect, useRef } from "react";
-import {
-    FiMessageSquare,
-    FiX,
-    FiCornerDownLeft,
-} from "react-icons/fi";
+import { useEffect, useRef, useState } from "react";
+import { FiMessageSquare, FiX, FiCornerDownLeft } from "react-icons/fi";
 
 type Option = {
     text: string;
@@ -23,6 +18,12 @@ type Message = {
     sender: "bot" | "user";
     text: string;
 };
+
+const createMessage = (sender: Message["sender"], text: string): Message => ({
+    id: crypto.randomUUID(),
+    sender,
+    text,
+});
 
 const chatScript: Record<string, ChatNode> = {
     start: {
@@ -155,57 +156,41 @@ const chatScript: Record<string, ChatNode> = {
 
 export default function Chatbot() {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<Message[]>([]);
-    const [currentNode, setCurrentNode] =
-        useState<ChatNode>(chatScript.start);
+
+    const [messages, setMessages] = useState<Message[]>([
+        createMessage("bot", chatScript.start.text),
+    ]);
+
+    const [currentNode, setCurrentNode] = useState<ChatNode>(chatScript.start);
+
     const [isTyping, setIsTyping] = useState(false);
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        if (messages.length === 0) {
-            setMessages([
-                {
-                    id: "init",
-                    sender: "bot",
-                    text: chatScript.start.text,
-                },
-            ]);
-        }
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        };
     }, []);
 
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({
-            behavior: "smooth",
-        });
-    }, [messages, isTyping]);
-
     const handleOptionClick = (option: Option) => {
-        setMessages((prev) => [
-            ...prev,
-            {
-                id: String(Date.now()),
-                sender: "user",
-                text: option.text,
-            },
-        ]);
+        if (isTyping) return;
+
+        setMessages((prev) => [...prev, createMessage("user", option.text)]);
 
         setIsTyping(true);
 
-        setTimeout(() => {
-            const nextNode =
-                chatScript[option.nextNodeId] ??
-                chatScript.start;
+        timeoutRef.current = setTimeout(() => {
+            const nextNode = chatScript[option.nextNodeId] ?? chatScript.start;
 
             setCurrentNode(nextNode);
 
             setMessages((prev) => [
                 ...prev,
-                {
-                    id: String(Date.now() + 1),
-                    sender: "bot",
-                    text: nextNode.text,
-                },
+                createMessage("bot", nextNode.text),
             ]);
 
             setIsTyping(false);
@@ -215,61 +200,46 @@ export default function Chatbot() {
     return (
         <div className="fixed bottom-6 right-6 z-50 font-sans">
             {!isOpen && (
-                <button onClick={() => setIsOpen(true)} className="flex items-center justify-center w-14 h-14 bg-yellow-600 hover:bg-yellow-500 text-white rounded-full shadow-lg transition">
+                <button type="button" onClick={() => setIsOpen(true)} className="w-14 h-14 rounded-full bg-yellow-600 hover:bg-yellow-500 text-white shadow-lg flex items-center justify-center">
                     <FiMessageSquare size={24} />
                 </button>
             )}
 
             {isOpen && (
                 <div className="w-90 h-125 bg-[#050505] rounded-2xl flex flex-col overflow-hidden">
+                    <div className="p-4 border-b border-white/10 flex justify-between items-center">
+                        <h3 className="text-white font-medium">Dúvidas Rápidas</h3>
 
-                    <div className="p-4 border-b border-white/10 flex justify-between">
-                        <h3 className="text-white">Dúvidas Rápidas</h3>
-
-                        <button onClick={() => setIsOpen(false)}><FiX /></button>
+                        <button type="button" onClick={() => setIsOpen(false)} className="text-zinc-400 hover:text-white transition-colors">
+                            <FiX size={18} />
+                        </button>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-4 space-y-4">
                         {messages.map((msg) => (
                             <div key={msg.id} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
-                                <div
-                                    className={`max-w-[80%] rounded-2xl p-3 text-sm leading-relaxed ${msg.sender === "user"
-                                        ? "bg-yellow-600 text-white rounded-tr-none"
-                                        : "bg-zinc-900 text-zinc-100 border border-white/5 rounded-tl-none"
-                                        }`}
-                                >
+                                <div className={`max-w-[80%] rounded-2xl p-3 text-sm ${msg.sender === "user" ? "bg-yellow-600 text-white" : "bg-zinc-900 text-zinc-100 border border-white/5"}`}>
                                     {msg.text}
                                 </div>
                             </div>
                         ))}
 
                         {isTyping && (
-                            <div className="flex">
-                                <div className="bg-zinc-900 text-zinc-400 border border-white/5 rounded-2xl p-3">
-                                    Digitando...
-                                </div>
-                            </div>
+                            <div className="text-zinc-500 text-sm">Digitando...</div>
                         )}
-
                         <div ref={messagesEndRef} />
                     </div>
 
                     <div className="p-4 border-t border-white/10">
-
-                        {isTyping ? (
-                            <p className="text-xs text-center text-zinc-500 italic">Aguardando resposta...</p>
-                        ) : (
-                            <div className="flex flex-wrap gap-2">
-                                {currentNode.options.map(
-                                    (option, idx) => (
-                                        <button key={idx} onClick={() => handleOptionClick(option)} className="w-full flex items-center gap-2 rounded-xl bg-zinc-900 text-zinc-200 hover:text-white border border-white/10 hover:border-yellow-500 px-3 py-2 text-xs transition-all">
-                                            
-                                            <FiCornerDownLeft size={12} />
-
-                                            <span>{option.text}</span>
-                                        </button>
-                                    )
-                                )}
+                        {!isTyping && (
+                            <div className="flex flex-col gap-2">
+                                {currentNode.options.map((option) => (
+                                    <button type="button" key={option.text} onClick={() => handleOptionClick(option)}
+                                        className="w-full flex items-center gap-2 rounded-xl bg-zinc-900 hover:border-yellow-500 border border-white/10 px-3 py-2 text-xs text-zinc-100 transition-colors">
+                                        <FiCornerDownLeft size={14} className="text-yellow-500 shrink-0" />
+                                        {option.text}
+                                    </button>
+                                ))}
                             </div>
                         )}
                     </div>
